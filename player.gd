@@ -9,6 +9,9 @@ const BULLET_INSTANCE = preload("res://bullet.tscn")
 
 @onready var world: Node2D = $".."
 
+func _ready() -> void:
+	add_to_group("player")
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -51,6 +54,7 @@ func get_direction():
 	return direction
 
 func Shoot_bullet():
+	print("y")
 	var BULLET = BULLET_INSTANCE.instantiate()
 	var target = get_global_mouse_position()
 	var spawn_pos = self.global_position + Vector2(0,-100)
