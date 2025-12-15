@@ -19,3 +19,5 @@ shape = SubResource("CircleShape2D_d5gmh")
 [node name="Image-removebg-preview(1)" type="Sprite2D" parent="."]
 scale = Vector2(0.417526, 0.417526)
 texture = ExtResource("1_d5gmh")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
