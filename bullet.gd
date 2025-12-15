@@ -22,9 +22,10 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group("coins") and body not in bounced_coins:
 		bounced_coins.append(body)
+		print("coins boinged: ", bounced_coins.size())
 		#henter player fra scenetree slik at vi kan bruke dens funksjoner
 		var player = get_tree().get_first_node_in_group("player")
-		var next_coin = player.nearest_visible_coin(body.global_position, body)
+		var next_coin = player.nearest_visible_coin(body.global_position, body, bounced_coins)
 		
 		if next_coin:
 			var direction = (next_coin.global_position - self.global_position).normalized()
@@ -35,5 +36,6 @@ func _on_body_entered(body: Node2D) -> void:
 			print("no more bounce")
 	#hvis kulen traff noe som ikke er en mynt
 	elif not body.is_in_group("coins"):
-		queue_free()
+		pass
+		#queue_free()
 	

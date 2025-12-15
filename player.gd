@@ -86,8 +86,9 @@ func has_line_of_sight(from: Vector2, to: Vector2) -> bool:
 	#raycast traff noe som ikke er en mynt
 	return false
 
-func nearest_visible_coin(from_pos: Vector2, exclude_coin = null):
+func nearest_visible_coin(from_pos: Vector2, exclude_coin = null, exclude_list = []):
 	#exclude_coin er mynten som kulen spretter av.
+	#exclude_list er alle mynter som kulen allerede har troffet
 	#dette er for at mynten ikke skal telles som nærmest
 	var coins = get_tree().get_nodes_in_group("coins")
 	var nearest_coin = null
@@ -97,6 +98,9 @@ func nearest_visible_coin(from_pos: Vector2, exclude_coin = null):
 	for coin in coins:
 		#hopper over mynten som sprettes av
 		if coin == exclude_coin:
+			continue
+		
+		if coin in exclude_list:
 			continue
 		
 		#finner distansen fra denne myntes til alle andre mynter i world
