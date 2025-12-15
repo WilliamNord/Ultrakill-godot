@@ -8,7 +8,7 @@ distance = 35.0
 [node name="world" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
-position = Vector2(403, 276)
+position = Vector2(403, 560)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

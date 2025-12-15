@@ -24,11 +24,24 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	if Input.is_action_just_pressed("click"):
+		Throw_Coin()
+		
+		
+	move_and_slide()
+	
+func Throw_Coin():
 		var COIN = COIN_INSTANCE.instantiate()
 		world.add_child(COIN)
 		#spawner coin litt over spilleren
 		COIN.global_position = self.global_position + Vector2(0,-100)
 		COIN.sleeping = false
-		COIN.apply_impulse(Vector2.ZERO, Vector2.UP * 200)
+		COIN.apply_impulse(get_direction())
 		print("coin toss")
-	move_and_slide()
+
+func get_direction():
+	var target = get_global_mouse_position()
+	var player_pos = self.global_position
+	var direction = target - player_pos
+	var length = direction.length()
+	print(direction)
+	return direction
