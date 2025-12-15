@@ -6,6 +6,7 @@ var speed = 2000
 var bounced_coins = []
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var impact_frame: Timer = $impactFrame
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,8 +20,17 @@ func _process(delta: float) -> void:
 #testing for å se om spretting funker
 func _on_body_entered(body: Node2D) -> void:
 	print("body entered: ", body)
-	
+
 	if body.is_in_group("coins") and body not in bounced_coins:
+		#senker tidsfarten, men burde ikke være null.
+		Engine.time_scale = 0.05
+		
+		#lager en timer (time_sec, Process always, process_in_physics, ignore_time_scale)
+		#vi setter ignore_time_scale så vi ikke må vente lengre bassert på time_scale
+		await get_tree().create_timer(0.09, true, false, true).timeout
+		
+		#setter tiden til vanlig etter await
+		Engine.time_scale = 1.0
 		bounced_coins.append(body)
 		print("coins boinged: ", bounced_coins.size())
 		#henter player fra scenetree slik at vi kan bruke dens funksjoner
@@ -38,4 +48,7 @@ func _on_body_entered(body: Node2D) -> void:
 	elif not body.is_in_group("coins"):
 		pass
 		#queue_free()
-	
+
+#setter tidshastigheten til normal etter en liten timer
+func _on_impact_frame_timeout() -> void:
+	Engine.time_scale = 1.0

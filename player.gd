@@ -99,7 +99,7 @@ func nearest_visible_coin(from_pos: Vector2, exclude_coin = null, exclude_list =
 		#hopper over mynten som sprettes av
 		if coin == exclude_coin:
 			continue
-		
+		#fikserbug med null spretting av mynt lengre unna enn siste sprett
 		if coin in exclude_list:
 			continue
 		
