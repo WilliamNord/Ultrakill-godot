@@ -71,7 +71,7 @@ func has_line_of_sight(from: Vector2, to: Vector2) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	#bruker raycast for å sjekke kollisjoner i veien mellom to steder
 	var query = PhysicsRayQueryParameters2D.create(from, to)
-	query.exclude = self
+	query.exclude = [self] #bobobopipopopo
 	
 	var result = space_state.intersect_ray(query)
 	
@@ -89,7 +89,7 @@ func has_line_of_sight(from: Vector2, to: Vector2) -> bool:
 func nearest_visible_coin(from_pos: Vector2, exclude_coin = null):
 	#exclude_coin er mynten som kulen spretter av.
 	#dette er for at mynten ikke skal telles som nærmest
-	var coins = get_tree().get_node_count_in_group("coins")
+	var coins = get_tree().get_nodes_in_group("coins")
 	var nearest_coin = null
 	#veldig stort tall, garrantert at en mynt er nærmere
 	var nearest_distance = INF
@@ -107,4 +107,4 @@ func nearest_visible_coin(from_pos: Vector2, exclude_coin = null):
 			nearest_coin = coin
 			
 	#returnerer det koden fant som næreste mynt
-	return nearest_coin 
+	return nearest_coin

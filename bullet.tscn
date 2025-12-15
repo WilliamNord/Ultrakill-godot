@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://egdhiu5s47i" path="res://bullet.gd" id="1_v8qja"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8qja"]
+radius = 18.0
+height = 52.0
 
 [node name="Bullet" type="Area2D"]
 collision_mask = 3
