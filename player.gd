@@ -65,3 +65,46 @@ func Shoot_bullet():
 	#legger til kulen i world
 	world.add_child(BULLET)
 	BULLET.global_position = spawn_pos
+
+#denne funksjonen bruker raycast for å sjekke om noe er imellom to mynter
+func has_line_of_sight(from: Vector2, to: Vector2) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	#bruker raycast for å sjekke kollisjoner i veien mellom to steder
+	var query = PhysicsRayQueryParameters2D.create(from, to)
+	query.exclude = self
+	
+	var result = space_state.intersect_ray(query)
+	
+	if result.is_empty():
+		#raycast traff ingenting
+		return true
+	
+	if result.collider.is_in_group("coins"):
+		#raycast traff en mynt
+		return true
+	
+	#raycast traff noe som ikke er en mynt
+	return false
+
+func nearest_visible_coin(from_pos: Vector2, exclude_coin = null):
+	#exclude_coin er mynten som kulen spretter av.
+	#dette er for at mynten ikke skal telles som nærmest
+	var coins = get_tree().get_node_count_in_group("coins")
+	var nearest_coin = null
+	#veldig stort tall, garrantert at en mynt er nærmere
+	var nearest_distance = INF
+	
+	for coin in coins:
+		#hopper over mynten som sprettes av
+		if coin == exclude_coin:
+			continue
+		
+		#finner distansen fra denne myntes til alle andre mynter i world
+		var distance = from_pos.distance_to(coin.global_position)
+		
+		if distance < nearest_distance and has_line_of_sight(from_pos, coin.global_position):
+			nearest_distance = distance
+			nearest_coin = coin
+			
+	#returnerer det koden fant som næreste mynt
+	return nearest_coin 
