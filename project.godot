@@ -15,6 +15,10 @@ run/main_scene="uid://b6u6wr387ymfs"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+obstacles="denne skal ikke treffes av en bullet"
+
 [input]
 
 ui_accept={

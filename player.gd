@@ -13,7 +13,7 @@ func _ready() -> void:
 	add_to_group("player")
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# legger til tyngdekraft som drar spilleren ned
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -21,8 +21,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	#actions for å gå frem og tilbake med A og D keys
+	#i tillegg til vesnstre og høyre pil 
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -71,9 +71,11 @@ func has_line_of_sight(from: Vector2, to: Vector2) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	#bruker raycast for å sjekke kollisjoner i veien mellom to steder
 	var query = PhysicsRayQueryParameters2D.create(from, to)
-	query.exclude = [self] #bobobopipopopo
+	query.exclude = [self] #bipbopbipbopbipbop
 	
 	var result = space_state.intersect_ray(query)
+	if result:
+		print(result)
 	
 	if result.is_empty():
 		#raycast traff ingenting
@@ -82,6 +84,10 @@ func has_line_of_sight(from: Vector2, to: Vector2) -> bool:
 	if result.collider.is_in_group("coins"):
 		#raycast traff en mynt
 		return true
+	
+	if result.collider.is_in_group("obstacle"):
+		print("RAYCAST TRAFF EN TING")
+		return false
 	
 	#raycast traff noe som ikke er en mynt
 	return false

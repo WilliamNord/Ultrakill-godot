@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6u6wr387ymfs"]
+[gd_scene load_steps=5 format=3 uid="uid://b6u6wr387ymfs"]
 
 [ext_resource type="PackedScene" uid="uid://osh56cy0e4lp" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://thqtueiglh4u" path="res://icon.svg" id="2_fj7yv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fj7yv"]
 distance = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlwt5"]
+size = Vector2(48, 309)
 
 [node name="world" type="Node2D"]
 
@@ -15,3 +19,16 @@ position = Vector2(403, 560)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(568, 681)
 shape = SubResource("WorldBoundaryShape2D_fj7yv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["obstacles"]]
+position = Vector2(707, 629)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, -90.5)
+shape = SubResource("RectangleShape2D_tlwt5")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -90.5)
+scale = Vector2(0.390625, 2.41406)
+texture = ExtResource("2_fj7yv")

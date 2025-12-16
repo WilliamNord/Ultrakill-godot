@@ -46,8 +46,9 @@ func _on_body_entered(body: Node2D) -> void:
 			print("no more bounce")
 	#hvis kulen traff noe som ikke er en mynt
 	elif not body.is_in_group("coins"):
-		pass
+		print("HIT:", body, "deleting")
 		#queue_free()
+		pass
 
 #setter tidshastigheten til normal etter en liten timer
 func _on_impact_frame_timeout() -> void:
