@@ -4,6 +4,7 @@ I dette spillet skal du bruke mynter og bullets for å løse puzzles og treffe e
 Controls:
 
 wasd: movement
+
 space: jump
 
 rightclick: throw coin in direction of the mouse
