@@ -43,12 +43,14 @@ func _on_body_entered(body: Node2D) -> void:
 			rotation = direction.angle() + deg_to_rad(90)
 			print("im bouncin to: ", next_coin.global_position)
 		else:
+			Engine.time_scale = 1.0
 			print("no more bounce")
 	#hvis kulen traff noe som ikke er en mynt
-	elif not body.is_in_group("coins"):
+	elif body.is_in_group("obstacles"):
 		print("HIT:", body, "deleting")
 		#problem med queue_free() skaper mye time_scale problemer?????
-		#queue_free()
+		Engine.time_scale = 1.0
+		queue_free()
 		pass
 
 #setter tidshastigheten til normal etter en liten timer

@@ -67,15 +67,15 @@ func Shoot_bullet():
 	BULLET.global_position = spawn_pos
 
 #denne funksjonen bruker raycast for å sjekke om noe er imellom to mynter
-func has_line_of_sight(from: Vector2, to: Vector2) -> bool:
+func has_line_of_sight(from: Vector2, to: Vector2, exclude_nodes = []) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	#bruker raycast for å sjekke kollisjoner i veien mellom to steder
 	var query = PhysicsRayQueryParameters2D.create(from, to)
-	query.exclude = [self] #bipbopbipbopbipbop
+	query.exclude = [self] + exclude_nodes
 	
 	var result = space_state.intersect_ray(query)
 	if result:
-		print(result)
+		print(result.collider.name)
 	
 	if result.is_empty():
 		#raycast traff ingenting
@@ -112,7 +112,7 @@ func nearest_visible_coin(from_pos: Vector2, exclude_coin = null, exclude_list =
 		#finner distansen fra denne myntes til alle andre mynter i world
 		var distance = from_pos.distance_to(coin.global_position)
 		
-		if distance < nearest_distance and has_line_of_sight(from_pos, coin.global_position):
+		if distance < nearest_distance and has_line_of_sight(from_pos, coin.global_position, exclude_list):
 			nearest_distance = distance
 			nearest_coin = coin
 			
