@@ -1,7 +1,8 @@
 Dette er et lite godot spill som er veldig inspirert fra spillet _Ulrakill_ 
 I dette spillet skal du bruke mynter og bullets for å løse puzzles og treffe en enemy.
 
-Controls
+Controls:
+
 wasd: movement
 space: jump
 
