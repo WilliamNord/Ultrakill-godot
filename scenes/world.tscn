@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6u6wr387ymfs"]
 
-[ext_resource type="PackedScene" uid="uid://osh56cy0e4lp" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://osh56cy0e4lp" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://thqtueiglh4u" path="res://icon.svg" id="2_fj7yv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fj7yv"]

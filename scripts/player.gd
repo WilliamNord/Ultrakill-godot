@@ -4,8 +4,8 @@ extends CharacterBody2D
 const SPEED = 350.0
 const JUMP_VELOCITY = -500.0
 
-const COIN_INSTANCE = preload("res://coin.tscn")
-const BULLET_INSTANCE = preload("res://bullet.tscn")
+const COIN_INSTANCE = preload("res://scenes/coin.tscn")
+const BULLET_INSTANCE = preload("res://scenes/bullet.tscn")
 
 @onready var world: Node2D = $".."
 
