@@ -67,6 +67,9 @@ func Shoot_bullet():
 	BULLET.global_position = spawn_pos
 
 #denne funksjonen bruker raycast for å sjekke om noe er imellom to mynter
+#from: mynt som er truffet
+#to: nærmeste mynt som skal treffs
+#exclude_node: alle mynter som allerede er truffet
 func has_line_of_sight(from: Vector2, to: Vector2, exclude_nodes = []) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	#bruker raycast for å sjekke kollisjoner i veien mellom to steder
@@ -81,6 +84,10 @@ func has_line_of_sight(from: Vector2, to: Vector2, exclude_nodes = []) -> bool:
 		#raycast traff ingenting
 		return true
 	
+	if result.collider.is_in_group("enemy"):
+		#raycast traff en enemy - prioritert
+		return true
+	
 	if result.collider.is_in_group("coins"):
 		#raycast traff en mynt
 		return true
@@ -92,15 +99,31 @@ func has_line_of_sight(from: Vector2, to: Vector2, exclude_nodes = []) -> bool:
 	#raycast traff noe som ikke er en mynt
 	return false
 
+#exclude_coin er mynten som kulen spretter av.
+#exclude_list er alle mynter som kulen allerede har troffet
+#dette er for at mynten ikke skal telles som nærmest
 func nearest_visible_coin(from_pos: Vector2, exclude_coin = null, exclude_list = []):
-	#exclude_coin er mynten som kulen spretter av.
-	#exclude_list er alle mynter som kulen allerede har troffet
-	#dette er for at mynten ikke skal telles som nærmest
+	#henter alle mynter i scene
 	var coins = get_tree().get_nodes_in_group("coins")
-	var nearest_coin = null
+	#henter alle enemys i levelet
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	#variabel for nærmeste mynt eller enemy
+	var nearest_target = null
 	#veldig stort tall, garrantert at en mynt er nærmere
 	var nearest_distance = INF
 	
+	#sjekker distansen til alle enemies i scene og sender tilbake den nærmeste
+	for enemy in enemies:
+		
+		if not enemy or enemy in exclude_list:
+			continue
+		
+		var distance = from_pos.distance_to(enemy.global_position)
+		
+		if distance < nearest_distance and has_line_of_sight(from_pos, enemy.global_position, exclude_list):
+			nearest_distance = distance
+			nearest_target = enemy
+
 	for coin in coins:
 		#hopper over mynten som sprettes av
 		if coin == exclude_coin:
@@ -114,7 +137,7 @@ func nearest_visible_coin(from_pos: Vector2, exclude_coin = null, exclude_list =
 		
 		if distance < nearest_distance and has_line_of_sight(from_pos, coin.global_position, exclude_list):
 			nearest_distance = distance
-			nearest_coin = coin
+			nearest_target = coin
 			
 	#returnerer det koden fant som næreste mynt
-	return nearest_coin
+	return nearest_target

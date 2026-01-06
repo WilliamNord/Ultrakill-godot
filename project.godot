@@ -15,9 +15,16 @@ run/main_scene="uid://b6u6wr387ymfs"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 obstacles="denne skal ikke treffes av en bullet"
+enemy="this is an enemy. bullet bounce priority"
 
 [input]
 

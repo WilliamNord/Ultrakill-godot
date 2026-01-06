@@ -8,20 +8,28 @@ var bounced_coins = []
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var impact_frame: Timer = $impactFrame
 
+@onready var particles: GPUParticles2D = $GPUParticles2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	connect("spawn_particle", send_particle)
 
+signal spawn_particle
+
+func send_particle():
+	emit_signal("spawn_particle")
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#ganger med delta slik at fart ikke kommer ann på fps
 	self.position += velocity * delta
 
-#testing for å se om spretting funker
+#funksjon som hondterer treffing og spretting av andre mynter
 func _on_body_entered(body: Node2D) -> void:
 	print("body entered: ", body)
 
 	if body.is_in_group("coins") and body not in bounced_coins:
+		particles.emitting = true
 		#senker tidsfarten, men burde ikke være null.
 		Engine.time_scale = 0.05
 		
@@ -31,12 +39,16 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		#setter tiden til vanlig etter await
 		Engine.time_scale = 1.0
+		
+		#legger til siste coin i exclude listen slik at den ikke spretter igjen
 		bounced_coins.append(body)
 		print("coins boinged: ", bounced_coins.size())
+		
 		#henter player fra scenetree slik at vi kan bruke dens funksjoner
 		var player = get_tree().get_first_node_in_group("player")
 		var next_coin = player.nearest_visible_coin(body.global_position, body, bounced_coins)
 		
+		#hvis en nermeste mynt finnes => sett retning og rotasjon
 		if next_coin:
 			var direction = (next_coin.global_position - self.global_position).normalized()
 			velocity = direction * speed
@@ -45,6 +57,7 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			Engine.time_scale = 1.0
 			print("no more bounce")
+			
 	#hvis kulen traff noe som ikke er en mynt
 	elif body.is_in_group("obstacles"):
 		print("HIT:", body, "deleting")

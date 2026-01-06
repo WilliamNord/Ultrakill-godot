@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6u6wr387ymfs"]
+[gd_scene load_steps=6 format=3 uid="uid://bx78t11quaqbu"]
 
-[ext_resource type="PackedScene" uid="uid://osh56cy0e4lp" path="res://scenes/player.tscn" id="1_f3sb7"]
-[ext_resource type="Texture2D" uid="uid://thqtueiglh4u" path="res://icon.svg" id="2_fj7yv"]
-[ext_resource type="Texture2D" uid="uid://dgcpsnqgghk8f" path="res://assets/DesertSunset.png" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://osh56cy0e4lp" path="res://scenes/player.tscn" id="1_rus8k"]
+[ext_resource type="Texture2D" uid="uid://thqtueiglh4u" path="res://icon.svg" id="2_5xbjy"]
+[ext_resource type="Texture2D" uid="uid://dgcpsnqgghk8f" path="res://assets/DesertSunset.png" id="3_4nkto"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fj7yv"]
 distance = 35.0
@@ -10,9 +10,9 @@ distance = 35.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlwt5"]
 size = Vector2(34, 309)
 
-[node name="level_1" type="Node2D"]
+[node name="world" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_f3sb7")]
+[node name="Player" parent="." instance=ExtResource("1_rus8k")]
 position = Vector2(403, 560)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -32,10 +32,10 @@ shape = SubResource("RectangleShape2D_tlwt5")
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, -90.5)
 scale = Vector2(0.390625, 2.41406)
-texture = ExtResource("2_fj7yv")
+texture = ExtResource("2_5xbjy")
 
 [node name="DesertSunset" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(799.337, 449.375)
-scale = Vector2(0.695359, 0.449625)
-texture = ExtResource("3_4wyf3")
+position = Vector2(804, 444)
+scale = Vector2(0.693326, 0.44325)
+texture = ExtResource("3_4nkto")
