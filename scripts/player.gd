@@ -118,11 +118,14 @@ func nearest_visible_coin(from_pos: Vector2, exclude_coin = null, exclude_list =
 		if not enemy or enemy in exclude_list:
 			continue
 		
-		var distance = from_pos.distance_to(enemy.global_position)
-		
-		if distance < nearest_distance and has_line_of_sight(from_pos, enemy.global_position, exclude_list):
-			nearest_distance = distance
-			nearest_target = enemy
+		if has_line_of_sight(from_pos, enemy.global_position, exclude_list):
+			return enemy
+			
+		#var distance = from_pos.distance_to(enemy.global_position)
+		#
+		#if distance < nearest_distance and has_line_of_sight(from_pos, enemy.global_position, exclude_list):
+			#nearest_distance = distance
+			#nearest_target = enemy
 
 	for coin in coins:
 		#hopper over mynten som sprettes av
