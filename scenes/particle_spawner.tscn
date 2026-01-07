@@ -7,3 +7,5 @@
 script = ExtResource("1_55ll1")
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("2_qpxtm")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

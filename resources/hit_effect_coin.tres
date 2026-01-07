@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="hit_effect" load_steps=2 format=3 uid="uid://c8j8l1plnecnd"]
+[gd_resource type="Resource" script_class="hit_effect" load_steps=3 format=3 uid="uid://c8j8l1plnecnd"]
 
+[ext_resource type="AudioStream" uid="uid://btsna15mi272b" path="res://sounds/dropping_aluminum_ingots3-105968.mp3" id="1_4q0b3"]
 [ext_resource type="Script" uid="uid://cqexc100g3v11" path="res://scripts/hit_effect.gd" id="1_nppiy"]
 
 [resource]
@@ -10,6 +11,7 @@ particle_lifetime = 0.3
 particle_speed = 200.0
 particle_gravity = 1000.0
 particle_scale = 1.0
+hit_sound = ExtResource("1_4q0b3")
 slowmo_duration = 0.1
 slowmo_scale = 0.05
 metadata/_custom_type_script = "uid://cqexc100g3v11"

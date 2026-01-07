@@ -6,6 +6,8 @@ class_name particle_spawner
 
 @onready var particles: GPUParticles2D = $GPUParticles2D
 
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 func _ready():
 	if effect and particles:
 		setup_particles()
@@ -29,11 +31,14 @@ func spawn_effect():
 	print("ParticleSpawner: Spawning effect!")
 	
 	if particles:
-		particles.restart()
+		#particles.restart()
 		particles.emitting = true
 	
 	# Slowmo fra resource
 	if effect:
+		audio_player.stream = effect.hit_sound
+		audio_player.play()
 		Engine.time_scale = effect.slowmo_scale
 		await get_tree().create_timer(effect.slowmo_duration, true, false, true).timeout
 		Engine.time_scale = 1.0
+	
