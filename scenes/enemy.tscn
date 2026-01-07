@@ -1,7 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://buquwl0gwr7rr"]
+[gd_scene load_steps=21 format=3 uid="uid://buquwl0gwr7rr"]
 
 [ext_resource type="Texture2D" uid="uid://4nef1nkh0nfg" path="res://assets/Desafio1Idle-ezgif.com-gif-to-sprite-converter.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://bqro8mkwrixxw" path="res://scenes/enemy.gd" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://be5xu33q3jtou" path="res://scenes/particle_spawner.tscn" id="3_4ra3w"]
+[ext_resource type="Resource" uid="uid://b1qdq7jtyg48f" path="res://resources/hit_effect_enemy.tres" id="4_5uy6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
 atlas = ExtResource("1_7p1mj")
@@ -125,3 +127,6 @@ frame_progress = 0.335732
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.25, -66.25)
 shape = SubResource("RectangleShape2D_7p1mj")
+
+[node name="Particle_Spawner" parent="." instance=ExtResource("3_4ra3w")]
+effect = ExtResource("4_5uy6h")

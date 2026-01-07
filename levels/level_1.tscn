@@ -300,7 +300,7 @@ sources/0 = SubResource("TileSetAtlasSource_gwceb")
 sources/1 = SubResource("TileSetAtlasSource_l53as")
 sources/2 = SubResource("TileSetAtlasSource_3sk1a")
 
-[node name="Level1" type="Node2D"]
+[node name="Level_1" type="Node2D"]
 
 [node name="DesertSunset" type="Sprite2D" parent="."]
 z_index = -1

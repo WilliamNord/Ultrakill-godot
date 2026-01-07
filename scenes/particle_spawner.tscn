@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://be5xu33q3jtou"]
+
+[ext_resource type="Script" uid="uid://se25q8lqxknu" path="res://particle_spawner.gd" id="1_55ll1"]
+[ext_resource type="PackedScene" uid="uid://g2xqblmu8tw8" path="res://particles.tscn" id="2_qpxtm"]
+
+[node name="Particle_Spawner" type="Node2D"]
+script = ExtResource("1_55ll1")
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("2_qpxtm")]

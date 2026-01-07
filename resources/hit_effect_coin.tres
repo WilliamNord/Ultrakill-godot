@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="hit_effect" load_steps=2 format=3 uid="uid://c8j8l1plnecnd"]
+
+[ext_resource type="Script" uid="uid://cqexc100g3v11" path="res://scripts/hit_effect.gd" id="1_nppiy"]
+
+[resource]
+script = ExtResource("1_nppiy")
+particle_color = Color(0.960784, 1, 0, 1)
+particle_amount = 10
+particle_lifetime = 0.3
+particle_speed = 200.0
+particle_gravity = 1000.0
+particle_scale = 1.0
+slowmo_duration = 0.1
+slowmo_scale = 0.05
+metadata/_custom_type_script = "uid://cqexc100g3v11"

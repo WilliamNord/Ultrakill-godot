@@ -10,7 +10,7 @@ distance = 35.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlwt5"]
 size = Vector2(34, 309)
 
-[node name="level_1" type="Node2D"]
+[node name="world" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 position = Vector2(403, 560)

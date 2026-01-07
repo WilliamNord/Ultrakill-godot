@@ -2,23 +2,19 @@ extends Area2D
 
 var velocity = Vector2.ZERO
 var speed = 2000
-#en array for mynter som allerede har blir boinget
-var bounced_coins = []
+var bounced_coins = [] #en array for mynter som allerede har blir boinget
+
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var impact_frame: Timer = $impactFrame
-
 @onready var particles: GPUParticles2D = $GPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	connect("spawn_particle", send_particle)
+	pass
 
-signal spawn_particle
+signal hit_target(target)
 
-func send_particle():
-	emit_signal("spawn_particle")
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#ganger med delta slik at fart ikke kommer ann på fps
@@ -29,7 +25,10 @@ func _on_body_entered(body: Node2D) -> void:
 	print("body entered: ", body)
 
 	if body.is_in_group("coins") and body not in bounced_coins:
-		particles.emitting = true
+		
+		if body.has_method("spawn_effect"):
+			body.spawn_effect()
+		
 		#senker tidsfarten, men burde ikke være null.
 		Engine.time_scale = 0.05
 		
@@ -57,8 +56,19 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			Engine.time_scale = 1.0
 			print("no more bounce")
-			
-	#hvis kulen traff noe som ikke er en mynt
+	
+	#hvis enemy er troffer isteden for en mynt
+	elif body.is_in_group("enemy"):
+		print("HIT ENEMY!")
+		
+		#henter funksjon fra enemy
+		if body.has_method("spawn_effect"):
+			body.spawn_effect()
+		
+		#Bullet forsvinner etter enemy treff
+		queue_free()
+		
+	#hvis kulen traff noe som ikke er en mynt eller enemy
 	elif body.is_in_group("obstacles"):
 		print("HIT:", body, "deleting")
 		#problem med queue_free() skaper mye time_scale problemer?????
