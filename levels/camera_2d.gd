@@ -13,6 +13,7 @@ func _ready() -> void:
 	original_position = position  # Lagre start-posisjon
 
 func shake_screen(intensity: float = 8.0):
+	#bruker minste verdi
 	shake_strength = min(intensity, max_shake_offset)
 	print("Camera shaking with intensity: ", intensity)
 

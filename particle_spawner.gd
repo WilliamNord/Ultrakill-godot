@@ -52,7 +52,7 @@ func spawn_effect():
 		var camera = get_tree().get_first_node_in_group("camera")
 		if camera and camera.has_method("shake_screen"):
 			camera.shake_screen(effect.screen_shake_intensity)
-	
+
 	# Slowmo
 	if effect:
 		Engine.time_scale = effect.slowmo_scale

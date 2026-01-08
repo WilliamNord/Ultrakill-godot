@@ -14,4 +14,5 @@ particle_scale = 1.0
 hit_sound = ExtResource("1_nuqnf")
 slowmo_duration = 0.1
 slowmo_scale = 0.05
+screen_shake_intensity = 0.0
 metadata/_custom_type_script = "uid://cqexc100g3v11"
