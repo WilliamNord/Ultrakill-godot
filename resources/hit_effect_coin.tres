@@ -1,17 +1,26 @@
-[gd_resource type="Resource" script_class="hit_effect" load_steps=3 format=3 uid="uid://c8j8l1plnecnd"]
+[gd_resource type="Resource" script_class="hit_effect" load_steps=5 format=3 uid="uid://c8j8l1plnecnd"]
 
 [ext_resource type="AudioStream" uid="uid://btsna15mi272b" path="res://sounds/dropping_aluminum_ingots3-105968.mp3" id="1_4q0b3"]
 [ext_resource type="Script" uid="uid://cqexc100g3v11" path="res://scripts/hit_effect.gd" id="1_nppiy"]
 
+[sub_resource type="Curve" id="Curve_4q0b3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 2), 0.0, 0.0, 0, 0, Vector2(0.7, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_qmdbi"]
+curve = SubResource("Curve_4q0b3")
+
 [resource]
 script = ExtResource("1_nppiy")
-particle_color = Color(0.960784, 1, 0, 1)
+particle_color = Color(0.988235, 0.945098, 0, 1)
 particle_amount = 10
-particle_lifetime = 0.3
-particle_speed = 200.0
-particle_gravity = 1000.0
-particle_scale = 1.0
+particle_lifetime = 0.8
+particle_speed = 50.0
+particle_gravity = 10000.0
+particle_scale = 0.9
+scale_curve = SubResource("CurveTexture_qmdbi")
 hit_sound = ExtResource("1_4q0b3")
 slowmo_duration = 0.1
 slowmo_scale = 0.05
+screen_shake_intensity = 1.0
 metadata/_custom_type_script = "uid://cqexc100g3v11"

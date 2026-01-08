@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cm8pwatk1c5v8"]
+[gd_scene load_steps=16 format=4 uid="uid://cm8pwatk1c5v8"]
 
 [ext_resource type="Texture2D" uid="uid://dgcpsnqgghk8f" path="res://assets/DesertSunset.png" id="1_vn7o3"]
 [ext_resource type="PackedScene" uid="uid://osh56cy0e4lp" path="res://scenes/player.tscn" id="2_bt44k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://il2k2ebkm4m" path="res://assets/Floor_tiles/Terras, Lands.png" id="5_btoec"]
 [ext_resource type="Texture2D" uid="uid://brwmrpvfggwsk" path="res://assets/wood.png" id="6_btoec"]
 [ext_resource type="PackedScene" uid="uid://buquwl0gwr7rr" path="res://scenes/enemy.tscn" id="7_gwceb"]
+[ext_resource type="Script" uid="uid://bnva6od7jfmc1" path="res://levels/camera_2d.gd" id="8_l53as"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n46q3"]
 distance = 35.0
@@ -340,3 +341,9 @@ tile_set = SubResource("TileSet_3sk1a")
 
 [node name="enemy" parent="." instance=ExtResource("7_gwceb")]
 position = Vector2(1257, 658)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(804, 448)
+script = ExtResource("8_l53as")
+shake_fade = 10.0
+max_shake_offset = 200.0
