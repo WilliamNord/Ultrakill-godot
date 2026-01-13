@@ -15,16 +15,16 @@ distance = 35.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btoec"]
 size = Vector2(34, 309)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n46q3"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l53as"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwceb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3sk1a"]
 texture = ExtResource("4_n46q3")
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l53as"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08mmt"]
 texture = ExtResource("5_btoec")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -75,7 +75,7 @@ texture = ExtResource("5_btoec")
 11:1/0 = 0
 11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3sk1a"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ot28"]
 texture = ExtResource("6_btoec")
 0:0/0 = 0
 1:0/0 = 0
@@ -296,10 +296,10 @@ texture = ExtResource("6_btoec")
 
 [sub_resource type="TileSet" id="TileSet_3sk1a"]
 physics_layer_0/collision_layer = 1
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_n46q3")
-sources/0 = SubResource("TileSetAtlasSource_gwceb")
-sources/1 = SubResource("TileSetAtlasSource_l53as")
-sources/2 = SubResource("TileSetAtlasSource_3sk1a")
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_l53as")
+sources/0 = SubResource("TileSetAtlasSource_3sk1a")
+sources/1 = SubResource("TileSetAtlasSource_08mmt")
+sources/2 = SubResource("TileSetAtlasSource_5ot28")
 
 [node name="Level_1" type="Node2D"]
 
