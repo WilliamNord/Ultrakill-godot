@@ -273,8 +273,11 @@ texture = ExtResource("4_ep78u")
 4:18/0 = 0
 5:18/0 = 0
 6:18/0 = 0
+6:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.73558, -8.47557, -8.53546, 8, -8, 8, -1.08797, 4.80039, -1.00702, -4.91373, -1.41178)
 7:18/0 = 0
+7:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.73558, -8.47557, -8.53546, 8, -8, 8, -1.08797, 4.80039, -1.00702, 4.92344, 8, -5.11448, 8, -4.91373, -1.41178)
 8:18/0 = 0
+8:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.73558, -8.47557, -8.53546, 8, -8, 8, -1.08797, 4.80039, -1.00702, -4.91373, -1.41178)
 9:18/0 = 0
 0:19/0 = 0
 1:19/0 = 0
@@ -285,6 +288,7 @@ texture = ExtResource("4_ep78u")
 6:19/0 = 0
 6:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:19/0 = 0
+7:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.90402, 8, -5.15659, -8, 5.12419, -8, 4.74534, 8)
 9:19/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vm7no"]
@@ -302,6 +306,10 @@ position = Vector2(806, 359)
 scale = Vector2(0.81668, 0.670246)
 texture = ExtResource("1_v5uil")
 
+[node name="enemy" parent="DesertSunset" instance=ExtResource("6_ilhis")]
+position = Vector2(642.847, 70.1236)
+scale = Vector2(0.367341, 0.447597)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="CanvasLayer" groups=["obstacles"]]
@@ -312,6 +320,3 @@ tile_set = SubResource("TileSet_vm7no")
 
 [node name="Player" parent="." instance=ExtResource("5_5722l")]
 position = Vector2(350, 604)
-
-[node name="enemy" parent="." instance=ExtResource("6_ilhis")]
-position = Vector2(1330, 397)
