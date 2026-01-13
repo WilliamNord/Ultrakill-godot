@@ -6,7 +6,6 @@ var bounced_coins = [] #en array for mynter som allerede har blir boinget
 
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var impact_frame: Timer = $impactFrame
 @onready var particles: GPUParticles2D = $GPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
