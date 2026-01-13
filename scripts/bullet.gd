@@ -34,7 +34,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		#lager en timer (time_sec, Process always, process_in_physics, ignore_time_scale)
 		#vi setter ignore_time_scale så vi ikke må vente lengre bassert på time_scale
-		await get_tree().create_timer(0.10, true, false, true).timeout
+		await get_tree().create_timer(0.0, true, false, true).timeout
 		
 		#setter tiden til vanlig etter await
 		Engine.time_scale = 1.0
