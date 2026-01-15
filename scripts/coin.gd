@@ -14,6 +14,6 @@ func _process(delta: float) -> void:
 	
 # Bullet kaller denne funksjonen
 func spawn_effect():
-	print("Coin: Forwarding to ParticleSpawner")
+	#print("Coin: Forwarding to ParticleSpawner")
 	if particle_spawner:
 		particle_spawner.spawn_effect()

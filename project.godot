@@ -26,6 +26,8 @@ window/stretch/mode="canvas_items"
 obstacles="denne skal ikke treffes av en bullet"
 enemy="this is an enemy. bullet bounce priority"
 camera="this is a camera"
+bullet="this is a bullet"
+coin="this is a coin"
 
 [input]
 

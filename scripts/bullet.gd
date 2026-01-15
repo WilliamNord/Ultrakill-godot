@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 #funksjon som hondterer treffing og spretting av andre mynter
 func _on_body_entered(body: Node2D) -> void:
-	print("body entered: ", body)
+	#print("body entered: ", body)
 
 	if body.is_in_group("coins") and body not in bounced_coins:
 		
@@ -51,14 +51,14 @@ func _on_body_entered(body: Node2D) -> void:
 			var direction = (next_coin.global_position - self.global_position).normalized()
 			velocity = direction * speed
 			rotation = direction.angle() + deg_to_rad(90)
-			print("im bouncin to: ", next_coin.global_position)
+			#print("im bouncin to: ", next_coin.global_position)
 		else:
 			Engine.time_scale = 1.0
-			print("no more bounce")
+			#print("no more bounce")
 	
 	#hvis enemy er troffer isteden for en mynt
 	elif body.is_in_group("enemy"):
-		print("HIT ENEMY!")
+		#print("HIT ENEMY!")
 		
 		#henter funksjon fra enemy
 		if body.has_method("spawn_effect"):
@@ -68,13 +68,17 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 		
 	#hvis kulen traff noe som ikke er en mynt eller enemy
-	elif body.is_in_group("obstacles"):
-		print("HIT:", body, "deleting")
-		#problem med queue_free() skaper mye time_scale problemer?????
-		Engine.time_scale = 1.0
-		queue_free()
-		pass
+
 
 #setter tidshastigheten til normal etter en liten timer
 func _on_impact_frame_timeout() -> void:
 	Engine.time_scale = 1.0
+
+#collisionshape for obstacles
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("obstacles"):
+		#print("HIT:", body, "deleting")
+		#problem med queue_free() skaper mye time_scale problemer?????
+		Engine.time_scale = 1.0
+		queue_free()
+		pass
